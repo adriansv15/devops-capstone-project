@@ -190,4 +190,7 @@ class TestAccountService(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         list_data = response.get_json()
         self.assertEqual(len(list_data), 5)
-        
+    
+    def test_method_not_allowed(self):
+        response = self.client.delete(BASE_URL)
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
